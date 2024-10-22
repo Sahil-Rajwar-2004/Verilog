@@ -1,0 +1,52 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x55d2c3e65b30 .scope module, "odd_parity_tb" "odd_parity_tb" 2 1;
+ .timescale 0 0;
+v0x55d2c3e77820_0 .var "data_in", 7 0;
+v0x55d2c3e77910_0 .net "parity", 0 0, L_0x55d2c3e77b00;  1 drivers
+S_0x55d2c3e65cc0 .scope module, "uut" "odd_parity" 2 5, 3 1 0, S_0x55d2c3e65b30;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "data_in";
+    .port_info 1 /OUTPUT 1 "parity";
+L_0x55d2c3e77b00 .functor NOT 1, L_0x55d2c3e779e0, C4<0>, C4<0>, C4<0>;
+v0x55d2c3e2eba0_0 .net *"_ivl_1", 0 0, L_0x55d2c3e779e0;  1 drivers
+v0x55d2c3e77640_0 .net "data_in", 7 0, v0x55d2c3e77820_0;  1 drivers
+v0x55d2c3e77720_0 .net "parity", 0 0, L_0x55d2c3e77b00;  alias, 1 drivers
+L_0x55d2c3e779e0 .reduce/xor v0x55d2c3e77820_0;
+    .scope S_0x55d2c3e65b30;
+T_0 ;
+    %vpi_call 2 11 "$monitor", "Time=%0t, data_in=%b, parity=%b", $time, v0x55d2c3e77820_0, v0x55d2c3e77910_0 {0 0 0};
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v0x55d2c3e77820_0, 0, 8;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 8;
+    %store/vec4 v0x55d2c3e77820_0, 0, 8;
+    %delay 10, 0;
+    %pushi/vec4 3, 0, 8;
+    %store/vec4 v0x55d2c3e77820_0, 0, 8;
+    %delay 10, 0;
+    %pushi/vec4 170, 0, 8;
+    %store/vec4 v0x55d2c3e77820_0, 0, 8;
+    %delay 10, 0;
+    %pushi/vec4 217, 0, 8;
+    %store/vec4 v0x55d2c3e77820_0, 0, 8;
+    %delay 10, 0;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v0x55d2c3e77820_0, 0, 8;
+    %delay 10, 0;
+    %vpi_call 2 31 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "odd_parity_tb.v";
+    "odd_parity.v";
